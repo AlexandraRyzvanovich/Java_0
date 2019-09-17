@@ -1,5 +1,7 @@
 package com.epam.task1;
 
+import java.lang.reflect.Array;
+
 public class ArraySorting {
 
     public int[] bubbleSort(int[] array){
@@ -9,38 +11,61 @@ public class ArraySorting {
             sorted = true;
             for(int i = 0; i < array.length-1; i++){
                 if(array[i] < array[i+1]){
-                    int temp = array[i];
+                    permanent = array[i];
                     array[i] = array[i+1];
-                    array[i+1] = temp;
+                    array[i+1] = permanent;
                     sorted = false;
                 }
             }
         }
-
         return array;
     }
 
-    public int[] sortType2(int[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            int current = array[i];
-            int j = i + 1;
-            while (current > array[j] && j < array.length - 1) {
-                j++;
-            }
-        }
-        return array;
-    }
-
-     public int[] sortType3(int[] array){
-        for(int i = 0; i < array.length -1; i++){
-            int min= array[i];
-            for (int j = 0; i < array.length -1; i++){
-                if(min > array[j]){
-                    min = array[j];
+     public int[] swapSort(int[] array){
+        boolean checked = false;
+        while (!checked) {
+            checked = true;
+            for (int i = 0; i < array.length -1; i++) {
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
+                    checked = false;
                 }
             }
         }
         return array;
+    }
+
+    public int[] selectionSort(int[] array){
+        for(int i = 0; i < array.length-1; i++){
+            int ind = i;
+            for(int j = i + 1; j < array.length-1; j++){
+                if(array[j] < array[ind]){
+                    ind = j;
+                }
+            }
+            swap(array, i, ind);
+        }
+        return array;
+    }
+    // 5, 6, 3
+    public int[] insertionSort(int[] array){
+        for(int i = 1; i < array.length; i++){
+            int value = array[i];
+            int iterator = i-1;
+            while (iterator>= 0 && value < array[iterator]){
+                array[iterator+1] = array[iterator];
+                iterator--;
+            }
+            array[iterator+1] = value;
+        }
+
+        return array;
+    }
+
+    private void swap(int[] array, int idx1, int idx2){
+        int temp = array[idx1];
+        array[idx1] = array[idx2];
+        array[idx2] = temp;
     }
 }
 

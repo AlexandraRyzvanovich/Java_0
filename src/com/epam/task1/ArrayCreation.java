@@ -8,11 +8,11 @@ public class ArrayCreation {
 
     public int[] getArray() {
         Random random = new Random();
-        int[] array = new int[SIZE];
-        for (int i = 0; i < array.length; i++){
-            array[i] = random.nextInt(BOUND);
-            System.out.println(array[i]);
-        }
+        int[] array = new int[]{2,3,1,9,5};
+        //for (int i = 0; i < array.length; i++){
+            //array[i] = random.nextInt(BOUND);
+          //  System.out.println(array[i]);
+        //}
         return array;
     }
     public String[][] getArrayString() {
