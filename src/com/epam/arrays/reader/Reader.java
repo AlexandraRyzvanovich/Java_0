@@ -6,17 +6,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.epam.arrays.conventor.FromStringToDoublesConverter;
 import com.epam.arrays.validator.ArrayValidator;
-
 
 public class Reader {
     private ArrayList<Double> lines = new ArrayList<>();
     ArrayValidator validator = new ArrayValidator();
     FromStringToDoublesConverter converter = new FromStringToDoublesConverter();
 
-    public ArrayList<Double> readFile(String path) {
+    public double[] readFile(String path) {
+        double[] array = new double[]{};
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
         String line;
@@ -27,10 +26,12 @@ public class Reader {
                 if(isValid){
                     List<Double> list = converter.covertStringToDoubles(line);
                     for (double a:list) {
-                        lines.add(a);
+                       lines.add(a);
                     }
                 }
             }
+            array = lines.stream().mapToDouble(d -> d).toArray();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -41,6 +42,6 @@ public class Reader {
                     e.printStackTrace();
                 }
         }
-        return lines;
+        return array;
     }
 }

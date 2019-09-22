@@ -1,5 +1,7 @@
 package com.epam.arrays.utils;
 
+import java.util.ArrayList;
+
 public class ValuesFinder {
 
     public static int getMin(int[] array) {
@@ -30,7 +32,7 @@ public class ValuesFinder {
         return sum;
     }
 
-    public static int[] addValue(int[] array, int value){
+    public static double[] addValue(double[] array, int value){
         for (int i = 0; i < array.length; i++) {
             array[i]+=value;
         }
