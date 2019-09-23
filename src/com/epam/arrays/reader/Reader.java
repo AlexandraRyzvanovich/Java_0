@@ -5,6 +5,7 @@ import com.epam.arrays.exceptions.ReaderException;
 import com.epam.arrays.validator.ArrayValidator;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +17,7 @@ public class Reader {
     private ArrayValidator validator = new ArrayValidator();
     private StringToDoublesConverter converter = new StringToDoublesConverter();
 
-    public double[] readFile(final String path) throws ReaderException {
+    public double[] readFile(final String path) throws ReaderException, IOException {
         double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
@@ -36,12 +37,8 @@ public class Reader {
             throw new ReaderException("Impossible to read a file");
 
         } finally {
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch (Exception ex) {
-                    throw new ReaderException("Connection is closed");
-                }
+            if(bufferedReader != null) {
+                bufferedReader.close();
             }
         }
         return finalArray;
