@@ -12,7 +12,7 @@ public class StringToDoubleConverterTest {
 
     @Test
     public void convertValidStringTest(String line, boolean expectedResult){
-        FromStringToDoublesConverter converter = new FromStringToDoublesConverter();
+        StringToDoublesConverter converter = new StringToDoublesConverter();
         List<Double> list = converter.covertStringToDoubles(line);
 
 

@@ -4,7 +4,7 @@ public class ConverterException extends RuntimeException {
     public ConverterException() {
     }
 
-    public ConverterException(String message) {
+    public ConverterException(final String message) {
         super(message);
     }
 }

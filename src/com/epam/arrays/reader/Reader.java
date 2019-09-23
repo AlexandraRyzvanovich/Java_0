@@ -1,6 +1,6 @@
 package com.epam.arrays.reader;
 
-import com.epam.arrays.converter.FromStringToDoublesConverter;
+import com.epam.arrays.converter.StringToDoublesConverter;
 import com.epam.arrays.exceptions.ReaderException;
 import com.epam.arrays.validator.ArrayValidator;
 
@@ -13,19 +13,19 @@ import java.util.List;
 
 public class Reader {
     private ArrayList<Double> lines = new ArrayList<>();
-    ArrayValidator validator = new ArrayValidator();
-    FromStringToDoublesConverter converter = new FromStringToDoublesConverter();
+    private ArrayValidator validator = new ArrayValidator();
+    private StringToDoublesConverter converter = new StringToDoublesConverter();
 
-    public double[] readFile(String path) throws ReaderException {
+    public double[] readFile(final String path) throws ReaderException {
         double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
         try {
             String line;
             bufferedReader = Files.newBufferedReader(filePath);
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
-                if(isValid){
+                if (isValid) {
                     List<Double> list = converter.covertStringToDoubles(line);
                     for (double a: list) {
                        lines.add(a);
@@ -38,11 +38,11 @@ public class Reader {
             throw new ReaderException("Impossible to read a file");
 
         } finally {
-            if(bufferedReader!= null) {
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (Exception ex) {
-                    throw new ReaderException("Buffer reader connection is closed");
+                    throw new ReaderException("Connection is closed");
                 }
             }
         }

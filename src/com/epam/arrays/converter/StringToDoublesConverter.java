@@ -5,7 +5,7 @@ import com.epam.arrays.exceptions.ConverterException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FromStringToDoublesConverter {
+public class StringToDoublesConverter {
 
     public List<Double> covertStringToDoubles(String line) throws ConverterException {
         ArrayList<Double> listDoubles = new ArrayList<>();

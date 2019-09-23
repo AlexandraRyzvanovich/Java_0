@@ -4,7 +4,7 @@ public class ReaderException extends RuntimeException {
     public ReaderException() {
     }
 
-    public ReaderException(String message) {
+    public ReaderException(final String message) {
         super(message);
     }
 }

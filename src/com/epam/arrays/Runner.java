@@ -7,8 +7,7 @@ public class Runner {
 
         IntStreamCreator creator = new IntStreamCreator();
         int[] array = creator.getIntStream();
-        for (int a:
-             array) {
+        for (int a: array) {
             System.out.println(a);
 
         }
