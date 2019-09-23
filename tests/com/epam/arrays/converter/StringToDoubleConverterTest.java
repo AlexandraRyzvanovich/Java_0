@@ -1,4 +1,4 @@
-package com.epam.arrays.convertor;
+package com.epam.arrays.converter;
 
 import org.testng.annotations.Test;
 

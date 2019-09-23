@@ -1,15 +1,15 @@
 package com.epam.arrays.reader;
 
-import java.io.*;
+import com.epam.arrays.converter.FromStringToDoublesConverter;
+import com.epam.arrays.exceptions.ReaderException;
+import com.epam.arrays.validator.ArrayValidator;
+
+import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.epam.arrays.exceptions.ReaderException;
-import com.epam.arrays.convertor.FromStringToDoublesConverter;
-import com.epam.arrays.validator.ArrayValidator;
 
 public class Reader {
     private ArrayList<Double> lines = new ArrayList<>();
@@ -20,14 +20,14 @@ public class Reader {
         double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
-        String line;
         try {
-           bufferedReader = Files.newBufferedReader(filePath);
+            String line;
+            bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null){
                 boolean isValid = validator.validateValues(line);
                 if(isValid){
                     List<Double> list = converter.covertStringToDoubles(line);
-                    for (double a:list) {
+                    for (double a: list) {
                        lines.add(a);
                     }
                 }
@@ -38,12 +38,13 @@ public class Reader {
             throw new ReaderException("Impossible to read a file");
 
         } finally {
-            if(bufferedReader!=null)
+            if(bufferedReader!= null) {
                 try {
-                bufferedReader.close();
-            } catch (Exception ex) {
-                    throw new ReaderException("Buffer reader connection not closed");
+                    bufferedReader.close();
+                } catch (Exception ex) {
+                    throw new ReaderException("Buffer reader connection is closed");
                 }
+            }
         }
         return finalArray;
     }

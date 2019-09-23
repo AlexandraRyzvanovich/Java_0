@@ -1,6 +1,7 @@
-package com.epam.arrays.convertor;
+package com.epam.arrays.converter;
 
 import com.epam.arrays.exceptions.ConverterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class FromStringToDoublesConverter {
                 listDoubles.add(value);
             }
         }catch (Exception e){
-            throw new ConverterException("File line is not valid");
+            throw new ConverterException("String line from file is not valid");
         }
         return listDoubles;
     }

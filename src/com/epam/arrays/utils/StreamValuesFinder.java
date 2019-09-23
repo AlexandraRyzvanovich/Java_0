@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 public class StreamValuesFinder {
     public int getMin(int[] array){
-        int min = Arrays.stream(array).min().getAsInt();
+        int min = Arrays.stream(array)
+                .min().getAsInt();
 
         return min;
     }
 
     public int getMax2(int[] array){
-        int arrayS = Arrays.stream(array).summaryStatistics().getMax();
+        int arrayS = Arrays.stream(array).summaryStatistics()
+                .getMax();
 
         return arrayS;
     }
@@ -21,7 +23,8 @@ public class StreamValuesFinder {
         return sum;
     }
     public double getAverage(int[] array){
-        double average = Arrays.stream(array).average().getAsDouble();
+        double average = Arrays.stream(array)
+                .average().getAsDouble();
 
         return average;
     }

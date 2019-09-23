@@ -2,18 +2,19 @@ package com.epam.arrays.utils;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class ArraySorterTest {
-    private final int[] ARRAY = {1, 888, 55, 12, 32};
 
-  //  @DataProvider(name = "arrays")
+   @DataProvider(name = "arrays")
     public static Object [][] arrays(){
-        return new Object[][]{{"1,2,3", true}, {"8,66,87,-58,52", true}};
+        return new Object[][]{{"1, 2, 3", "1, 2, 3"}, {"8, 5, 4", "4, 5, 8"}};
     }
 
     @BeforeClass
     public void setUp(){
+       ArraySorter arraySorter = new ArraySorter();
 
     }
 
@@ -22,8 +23,8 @@ public class ArraySorterTest {
 
     }
 
-   // @Test(DataProvider = "arrays")
-    public void sortArraySuccessfully(int[] array, boolean expecredResult){
+   @Test(dataProvider =  "arrays")
+    public void sortArraySuccessfully(int[] array, boolean expectedResult){
 
     }
 
