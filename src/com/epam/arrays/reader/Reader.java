@@ -15,7 +15,7 @@ public class Reader {
     FromStringToDoublesConverter converter = new FromStringToDoublesConverter();
 
     public double[] readFile(String path) {
-        double[] array = new double[]{};
+        double[] finalArray = new double[]{};
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
         String line;
@@ -30,7 +30,7 @@ public class Reader {
                     }
                 }
             }
-            array = lines.stream().mapToDouble(d -> d).toArray();
+            finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -42,6 +42,6 @@ public class Reader {
                     e.printStackTrace();
                 }
         }
-        return array;
+        return finalArray;
     }
 }
