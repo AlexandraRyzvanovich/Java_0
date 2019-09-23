@@ -27,9 +27,7 @@ public class Reader {
                 boolean isValid = validator.validateValues(line);
                 if (isValid) {
                     List<Double> list = converter.covertStringToDoubles(line);
-                    for (double a: list) {
-                       lines.add(a);
-                    }
+                    lines.addAll(list);
                 }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
