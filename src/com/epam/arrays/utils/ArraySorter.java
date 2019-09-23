@@ -1,8 +1,6 @@
-package com.epam.task1;
+package com.epam.arrays.utils;
 
-import java.lang.reflect.Array;
-
-public class ArraySorting {
+public class ArraySorter {
 
     public int[] bubbleSort(int[] array){
         boolean sorted = false;
@@ -21,7 +19,7 @@ public class ArraySorting {
         return array;
     }
 
-     public int[] swapSort(int[] array){
+    public int[] swapSort(int[] array){
         boolean checked = false;
         while (!checked) {
             checked = true;
@@ -47,7 +45,7 @@ public class ArraySorting {
         }
         return array;
     }
-    // 5, 6, 3
+
     public int[] insertionSort(int[] array){
         for(int i = 1; i < array.length; i++){
             int value = array[i];
@@ -58,7 +56,6 @@ public class ArraySorting {
             }
             array[iterator+1] = value;
         }
-
         return array;
     }
 
@@ -68,5 +65,4 @@ public class ArraySorting {
         array[idx2] = temp;
     }
 }
-
 
