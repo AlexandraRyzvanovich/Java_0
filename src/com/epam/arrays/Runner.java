@@ -1,22 +1,23 @@
 package com.epam.arrays;
 
-import com.epam.arrays.reader.Reader;
-import com.epam.arrays.utils.ValuesFinder;
-
-import java.util.ArrayList;
+import com.epam.arrays.creator.IntStreamCreator;
 
 public class Runner {
     public static void main(String[] args) {
 
-       Reader reader = new Reader();
-       double[] list = reader.readFile("C:\\Users\\Alexandra\\IdeaProjects\\Java_0\\Resourses\\DataFile");
-        ValuesFinder finder = new ValuesFinder();
-        double[] aa = finder.addValue(list, 8);
-        for (double a:
-             aa) {
-            System.out.println(a);
+      int[] array = new int[]{2, 5, 1};
 
+        IntStreamCreator str = new IntStreamCreator();
+        System.out.println(str.getMax(array));
+        System.out.println(str.getMax2(array));
+        int[] ar = str.sort(array);
+        for (int a :
+             ar) {
+            System.out.println(a);
         }
+        System.out.println(str.getAverage(array));
+        System.out.println(str.getSum(array));
+
 
 
     }
