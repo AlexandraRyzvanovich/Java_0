@@ -6,7 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import com.epam.arrays.conventor.FromStringToDoublesConverter;
+
+import com.epam.arrays.Exceptions.ReaderException;
+import com.epam.arrays.convertor.FromStringToDoublesConverter;
 import com.epam.arrays.validator.ArrayValidator;
 
 public class Reader {
@@ -14,8 +16,8 @@ public class Reader {
     ArrayValidator validator = new ArrayValidator();
     FromStringToDoublesConverter converter = new FromStringToDoublesConverter();
 
-    public double[] readFile(String path) {
-        double[] finalArray = new double[]{};
+    public double[] readFile(String path) throws ReaderException {
+        double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
         String line;
@@ -32,14 +34,15 @@ public class Reader {
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
+            throw new ReaderException("Impossible to read a file");
+
         } finally {
             if(bufferedReader!=null)
                 try {
                 bufferedReader.close();
-            } catch (IOException e) {
-                    e.printStackTrace();
+            } catch (Exception ex) {
+                    throw new ReaderException("Buffer reader connection not closed");
                 }
         }
         return finalArray;

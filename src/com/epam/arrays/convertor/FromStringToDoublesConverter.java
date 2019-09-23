@@ -1,14 +1,12 @@
-package com.epam.arrays.conventor;
+package com.epam.arrays.convertor;
 
+import com.epam.arrays.Exceptions.ConverterException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class FromStringToDoublesConverter {
 
-    public List<Double> covertStringToDoubles(String line) {
+    public List<Double> covertStringToDoubles(String line) throws ConverterException {
         ArrayList<Double> listDoubles = new ArrayList<>();
         try {
             String[] arr = line.split(" ");
@@ -17,7 +15,7 @@ public class FromStringToDoublesConverter {
                 listDoubles.add(value);
             }
         }catch (Exception e){
-            System.out.println("fbdcgbdgc");
+            throw new ConverterException("File line is not valid");
         }
         return listDoubles;
     }
