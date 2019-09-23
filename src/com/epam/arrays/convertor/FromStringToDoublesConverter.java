@@ -1,6 +1,6 @@
 package com.epam.arrays.convertor;
 
-import com.epam.arrays.Exceptions.ConverterException;
+import com.epam.arrays.exceptions.ConverterException;
 import java.util.ArrayList;
 import java.util.List;
 

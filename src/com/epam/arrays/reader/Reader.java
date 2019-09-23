@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.arrays.Exceptions.ReaderException;
+import com.epam.arrays.exceptions.ReaderException;
 import com.epam.arrays.convertor.FromStringToDoublesConverter;
 import com.epam.arrays.validator.ArrayValidator;
 

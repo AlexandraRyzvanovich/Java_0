@@ -1,4 +1,4 @@
-package com.epam.arrays.Exceptions;
+package com.epam.arrays.exceptions;
 
 public class ConverterException extends RuntimeException {
     public ConverterException() {
