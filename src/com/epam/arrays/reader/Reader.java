@@ -13,28 +13,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reader {
-    private ArrayList<Double> lines = new ArrayList<>();
-    private ArrayValidator validator = new ArrayValidator();
-    private StringToDoublesConverter converter = new StringToDoublesConverter();
+    private ArrayList<Double> lines;
+    private StringToDoublesConverter converter;
 
-    public double[] readFile(final String path) throws ReaderException, IOException {
-        double[] finalArray;
+    public Reader() {
+        lines = new ArrayList<>();
+        converter = new StringToDoublesConverter();
+    }
+
+    public double[] readFile(final String path) throws IOException {
+        double[] finalArray = null;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
+         ArrayValidator validator = new ArrayValidator();
         try {
             String line;
             bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
-                if (isValid) {
-                    List<Double> list = converter.covertStringToDoubles(line);
-                    lines.addAll(list);
+              try {
+                  if (isValid) {
+                      List<Double> list = converter.covertStringToDoubles(line);
+                      lines.addAll(list);
+                  } else {
+                      throw new ReaderException("The string is not valid");
+                  }
                 }
+              catch (ReaderException e) {
+                  System.out.println ( "The error is:"  +  e.getMessage());
+              }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
+        } catch (IOException ex) {
+            System.out.println("File problems occurred");
+
         } catch (Exception ex) {
-            throw new ReaderException("Impossible to read a file");
+            ex.getMessage();
 
         } finally {
             if(bufferedReader != null) {

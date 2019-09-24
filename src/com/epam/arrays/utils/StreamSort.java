@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class StreamSort {
-    public int[] sortDsc(int[] array) {
+    public int[] sortDsc(final int[] array) {
         int[] sortedArray = Arrays.stream(array).boxed()
                 .sorted(Comparator.reverseOrder())
                 .mapToInt(Integer::intValue).toArray();
@@ -12,7 +12,7 @@ public class StreamSort {
         return sortedArray;
     }
 
-    public int[] sortAsc(int[] array) {
+    public int[] sortAsc(final int[] array) {
         int[] sortedArray = Arrays.stream(array)
                                 .sorted().toArray();
 
