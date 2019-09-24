@@ -1,11 +1,13 @@
 package com.epam.arrays.converter;
 
+import com.epam.arrays.exceptions.ConverterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class StringToDoublesConverter {
 
-    public List<Double> covertStringToDoubles(String line) {
+    public List<Double> covertStringToDoubles(String line) throws ConverterException {
         ArrayList<Double> listDoubles = new ArrayList<>();
         try {
             String[] arr = line.split(" ");
@@ -14,7 +16,7 @@ public class StringToDoublesConverter {
                 listDoubles.add(value);
             }
         }catch (Exception e){
-            System.out.println("fbdcgbdgc");
+            throw new ConverterException("String line from file is not valid");
         }
         return listDoubles;
     }

@@ -1,15 +1,15 @@
 package com.epam.arrays;
 
-import com.epam.arrays.reader.Reader;
+import com.epam.arrays.creator.IntStreamCreator;
 
 public class Runner {
     public static void main(String[] args) {
 
-       Reader reader = new Reader();
-       double[] list = reader.readFile("C:\\Users\\User\\IdeaProjects\\Java_0\\Resourses\\DataFile");
-        for (double a :
-             list) {
+        IntStreamCreator creator = new IntStreamCreator();
+        int[] array = creator.getIntStream();
+        for (int a: array) {
             System.out.println(a);
+
         }
     }
 }

@@ -1,12 +1,11 @@
 package com.epam.arrays.validator;
 
 public class ArrayValidator {
+    private final String regex = "^[\\s\\d\\.]*$";
 
-    public Boolean validateValues(String line){
-        String regex = "^[\\s\\d\\.]*$";
-        boolean result = line.matches(regex);
+    public Boolean validateValues(String line) {
 
-     return result;
+     return line.matches(regex);
     }
 
 }
