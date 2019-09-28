@@ -4,11 +4,11 @@ public class ArrayValuesFinder {
 
     public double getMin(double[] array) {
         double min = array[0];
-            for (int i = 0; i < array.length; i++) {
-                if (min > array[i]) {
-                    min = array[i];
-                }
+        for (double value : array) {
+            if (min > value) {
+                min = value;
             }
+        }
         return min;
     }
 
@@ -24,8 +24,8 @@ public class ArrayValuesFinder {
 
     public double getSum( double[] array) {
         double sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+        for (double value : array) {
+            sum += value;
         }
         return sum;
     }

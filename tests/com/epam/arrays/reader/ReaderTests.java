@@ -24,7 +24,7 @@ public class ReaderTests {
     public void read_Valid_File_Test(String path, int expectedLength){
         double[] array = reader.readFile(path);
         Assert.assertNotNull(array);
-        Assert.assertTrue(array.length == expectedLength);
+        Assert.assertEquals(expectedLength, array.length);
     }
 
     @DataProvider

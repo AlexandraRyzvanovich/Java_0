@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 
 public class Reader {
 
-    private ArrayList<Double> lines;
-    private StringToDoublesConverter converter;
+    final private ArrayList<Double> lines;
+    final private StringToDoublesConverter converter;
     private static Logger logger;
 
     public Reader() {
@@ -26,7 +26,7 @@ public class Reader {
     }
 
     public double[] readFile(String path) {
-        double[] finalArray = null;
+        double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
          ArrayValidator validator = new ArrayValidator();
