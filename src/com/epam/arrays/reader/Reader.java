@@ -11,17 +11,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Reader {
+
     private ArrayList<Double> lines;
     private StringToDoublesConverter converter;
+    private static Logger logger;
 
     public Reader() {
         lines = new ArrayList<>();
         converter = new StringToDoublesConverter();
+        logger = Logger.getLogger(Reader.class.getName());
     }
 
-    public double[] readFile(final String path) throws IOException {
+    public double[] readFile(String path) {
         double[] finalArray = null;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
@@ -31,29 +35,24 @@ public class Reader {
             bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
-              try {
                   if (isValid) {
                       List<Double> list = converter.covertStringToDoubles(line);
                       lines.addAll(list);
-                  } else {
-                      throw new ReaderException("The string is not valid");
-                  }
                 }
-              catch (ReaderException e) {
-                  System.out.println ( "The error is:"  +  e.getMessage());
-              }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
-        } catch (IOException ex) {
-            System.out.println("File problems occurred");
-
         } catch (Exception ex) {
-            ex.getMessage();
+            throw new ReaderException("Impossible to read a file", ex);
 
         } finally {
-            if(bufferedReader != null) {
-                bufferedReader.close();
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                }
+                catch (IOException e) {
+                    logger.info("Error occurred while bufferReader closing");
+                }
             }
         }
         return finalArray;

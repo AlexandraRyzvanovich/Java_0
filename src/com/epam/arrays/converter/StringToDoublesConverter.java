@@ -7,20 +7,17 @@ import java.util.List;
 
 public class StringToDoublesConverter {
 
-    public List<Double> covertStringToDoubles(final String line) {
-        ArrayList<Double> listDoubles = new ArrayList<>();
-
+    public List<Double> covertStringToDoubles(String line) {
+        List<Double> listDoubles = new ArrayList<>();;
+        try {
             String[] arr = line.split(" ");
             for (int i = 0; i < arr.length; i++) {
-                try {
-                    double value = Double.parseDouble(arr[i]);
-                    listDoubles.add(value);
-                } catch (ConverterException e) {
-                    System.out.println("Error occurred while parsing String to Double."
-                            + "Error: " + e.getMessage());
-                }
+                double value = Double.parseDouble(arr[i]);
+                listDoubles.add(value);
             }
-
+        }catch (Exception e){
+            throw new ConverterException("Impossible to convert line from a file", e.getCause());
+        }
         return listDoubles;
     }
 }

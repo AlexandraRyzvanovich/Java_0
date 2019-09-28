@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Alexandra/IdeaProjects/Java_0/tests">
-        <classes/>
+        <classes>
+            <class name="com.epam.arrays.converter.StringToDoubleConverterTest"/>
+            <class name="com.epam.arrays.creator.ArrayCreatorTest"/>
+            <class name="com.epam.arrays.reader.ReaderTest"/>
+        </classes>
     </test>
 </suite>

@@ -30,14 +30,14 @@ public class ValuesFinder {
         return sum;
     }
 
-    public double[] addValue(double[] array, int value) {
+    public double[] addValue( final double[] array, int value) {
         for (int i = 0; i < array.length; i++) {
             array[i] += value;
         }
         return array;
     }
 
-    public int midValue(int[] array) {
+    public int midValue(final int[] array) {
         int sum = getSum(array);
         int length = array.length;
         int mid = sum / length;

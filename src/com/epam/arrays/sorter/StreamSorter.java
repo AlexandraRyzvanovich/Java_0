@@ -1,9 +1,9 @@
-package com.epam.arrays.utils;
+package com.epam.arrays.sorter;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class StreamSort {
+public class StreamSorter {
     public int[] sortDsc(final int[] array) {
         int[] sortedArray = Arrays.stream(array).boxed()
                 .sorted(Comparator.reverseOrder())
