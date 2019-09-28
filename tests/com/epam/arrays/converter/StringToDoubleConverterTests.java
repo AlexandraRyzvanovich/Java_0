@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class StringToDoubleConverterTest {
+public class StringToDoubleConverterTests {
     StringToDoublesConverter converter;
 
     @BeforeClass

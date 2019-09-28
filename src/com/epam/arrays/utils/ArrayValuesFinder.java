@@ -1,9 +1,9 @@
 package com.epam.arrays.utils;
 
-public class ValuesFinder {
+public class ArrayValuesFinder {
 
-    public int getMin(int[] array) {
-            int min = array[0];
+    public double getMin(double[] array) {
+        double min = array[0];
             for (int i = 0; i < array.length; i++) {
                 if (min > array[i]) {
                     min = array[i];
@@ -12,8 +12,8 @@ public class ValuesFinder {
         return min;
     }
 
-    public int getMax(int[] array) {
-        int max = array[array.length - 1];
+    public double getMax(double[] array) {
+        double max = array[array.length - 1];
         for (int i = array.length - 1; i >= 0; i--) {
             if (max < array[i]) {
                 max = array[i];
@@ -22,8 +22,8 @@ public class ValuesFinder {
         return max;
     }
 
-    public int getSum( final int[] array) {
-        int sum = 0;
+    public double getSum( double[] array) {
+        double sum = 0;
         for (int i = 0; i < array.length; i++) {
             sum += array[i];
         }
@@ -37,10 +37,10 @@ public class ValuesFinder {
         return array;
     }
 
-    public int midValue(final int[] array) {
-        int sum = getSum(array);
+    public double midValue(double[] array) {
+        double sum = getSum(array);
         int length = array.length;
-        int mid = sum / length;
+        double mid = sum / length;
 
         return mid;
     }

@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class ReaderTest {
+public class ReaderTests {
     Reader reader;
     @BeforeClass
     public void setUp(){
