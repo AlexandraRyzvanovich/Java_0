@@ -30,7 +30,7 @@ public class ArrayValuesFinder {
         return sum;
     }
 
-    public double[] addValue( final double[] array, int value) {
+    public double[] addValue( double[] array, double value) {
         for (int i = 0; i < array.length; i++) {
             array[i] += value;
         }

@@ -14,7 +14,7 @@ public class ArrayCreator {
             for (int i = 0; i < array.length; i++) {
                 array[i] = random.nextInt(bound);
             }
-        }catch (Exception e){
+        } catch (Exception e ) {
             throw new CreatorException("Invalid values to create array were given", e.getCause());
         }
         return array;
@@ -25,7 +25,7 @@ public class ArrayCreator {
         try {
             valuesIntStream = new Random().ints(min, max)
                     .limit(maxCount).distinct().toArray();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new CreatorException("Invalid values to create array were given", e.getCause());
         }
         return valuesIntStream;

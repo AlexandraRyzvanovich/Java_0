@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 
 public class Reader {
 
-    final private ArrayList<Double> lines;
-    final private StringToDoublesConverter converter;
+    private final ArrayList<Double> lines;
+    private final StringToDoublesConverter converter;
     private static Logger logger;
 
     public Reader() {

@@ -8,6 +8,9 @@
             <class name="com.epam.arrays.reader.ReaderTests"/>
             <class name="com.epam.arrays.sorter.StreamSorterTests"/>
             <class name="com.epam.arrays.sorter.ArraySorterTests"/>
+            <class name="com.epam.arrays.utils.ArrayValuesFinder"/>
+            <class name="com.epam.arrays.utils.StreamValuesFinder"/>
+            
         </classes>
     </test>
 </suite>

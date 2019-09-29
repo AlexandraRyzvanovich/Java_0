@@ -11,14 +11,13 @@ public class StringToDoublesConverter {
         List<Double> listDoubles = new ArrayList<>();
         try {
             String[] arr = line.split(" ");
-            for (String item:
-                 arr) {
+            for (String item: arr) {
                 double value = Double.parseDouble(item);
                 listDoubles.add(value);
 
             }
-        }catch (Exception e){
-            throw new ConverterException("Impossible to convert line from a file", e.getCause());
+        } catch (Exception e) {
+            throw new ConverterException ("Impossible to convert line from a file", e.getCause());
         }
         return listDoubles;
     }
