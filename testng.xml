@@ -10,7 +10,7 @@
             <class name="com.epam.arrays.sorter.ArraySorterTests"/>
             <class name="com.epam.arrays.utils.ArrayValuesFinder"/>
             <class name="com.epam.arrays.utils.StreamValuesFinder"/>
-            
+            <class name="com.epam.arrays.validator.ArrayValidatorTests"/>
         </classes>
     </test>
 </suite>

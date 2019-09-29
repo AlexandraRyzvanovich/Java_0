@@ -14,10 +14,9 @@ public class StringToDoublesConverter {
             for (String item: arr) {
                 double value = Double.parseDouble(item);
                 listDoubles.add(value);
-
             }
         } catch (Exception e) {
-            throw new ConverterException ("Impossible to convert line from a file", e.getCause());
+            throw new ConverterException ( "Impossible to convert line from a file", e.getCause());
         }
         return listDoubles;
     }

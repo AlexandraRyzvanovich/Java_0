@@ -20,8 +20,8 @@ public class ArrayCreatorTests {
     }
 
     @Test(dataProvider = "valid_Data_To_Create_Array")
-    public void check_Random_Created_Array(int expectedSize, int bound){
-        int[] array = creator.getArray(expectedSize, bound);
+    public void check_Random_Created_Array(int expectedSize, int valueRange){
+        int[] array = creator.getArray(expectedSize, valueRange);
         int actualSize = array.length;
         Assert.assertNotNull(array);
         Assert.assertEquals(expectedSize, actualSize);
@@ -33,8 +33,8 @@ public class ArrayCreatorTests {
     }
 
     @Test(dataProvider = "invalid_Data_To_Create_Array", expectedExceptions = CreatorException.class)
-    public void check_Random_Creator_Array_Exception(int size, int bound) throws CreatorException{
-        creator.getArray(size, bound);
+    public void check_Random_Creator_Array_Exception(int size, int valueRange) throws CreatorException{
+        creator.getArray(size, valueRange);
     }
 
     @DataProvider

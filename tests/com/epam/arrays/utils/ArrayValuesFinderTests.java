@@ -26,7 +26,7 @@ public class ArrayValuesFinderTests {
 
     @Test(dataProvider = "data_For_Min_Max_Finder")
     public void getMinTest_Valid_Data(double[] array, double minExpected, double maxExpected){
-        double minActual = finder.getMin(array);
+        double minActual = ArrayValuesFinder.getMin(array);
         Assert.assertNotNull(minActual);
         Assert.assertEquals(minActual, minExpected);
         Assert.assertTrue(maxExpected > minActual);
@@ -34,7 +34,7 @@ public class ArrayValuesFinderTests {
 
     @Test(dataProvider = "data_For_Min_Max_Finder")
     public void getMaxTest_Valid_Data(double[] array, double minExpected, double maxExpected){
-        double maxActual = finder.getMax(array);
+        double maxActual = ArrayValuesFinder.getMax(array);
         Assert.assertNotNull(maxActual);
         Assert.assertEquals(maxActual, maxExpected);
         Assert.assertTrue(maxActual > minExpected);
@@ -50,14 +50,14 @@ public class ArrayValuesFinderTests {
     }
     @Test(dataProvider = "data_For_Average_Sum_Finder")
     public void getSumTest_Valid_Data(double[] array, double sumExpected){
-        double sumActual = finder.getSum(array);
+        double sumActual = ArrayValuesFinder.getSum(array);
         Assert.assertNotNull(sumActual);
         Assert.assertEquals(sumActual, sumExpected);
     }
 
     @Test(dataProvider = "data_For_Average_Sum_Finder")
     public void midValueTest_Valid_Data(double[] array, double sumExpected) {
-        double midActual = finder.midValue(array);
+        double midActual = ArrayValuesFinder.midValue(array);
         double midExpected = sumExpected/array.length;
         Assert.assertNotNull(midActual);
         Assert.assertEquals(midActual, midExpected);
@@ -73,7 +73,7 @@ public class ArrayValuesFinderTests {
     }
     @Test(dataProvider = "data_For_AddValue_Finder")
     public void addValueTest_Valid_Data(double[] arrayInitial, double valueToAdd, double[] arrayExpected){
-        double[] arrayActual = finder.addValue(arrayInitial, valueToAdd);
+        double[] arrayActual = ArrayValuesFinder.addValue(arrayInitial, valueToAdd);
         Assert.assertNotNull(arrayActual);
         Assert.assertTrue(Arrays.equals(arrayActual, arrayExpected));
     }

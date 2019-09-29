@@ -6,15 +6,15 @@ import java.util.Random;
 
 public class ArrayCreator {
 
-    public int[] getArray(int size, int bound) {
+    public int[] getArray(int size, int valueRange) {
         int[] array;
         try {
             Random random = new Random();
             array = new int[size];
             for (int i = 0; i < array.length; i++) {
-                array[i] = random.nextInt(bound);
+                array[i] = random.nextInt(valueRange);
             }
-        } catch (Exception e ) {
+        } catch (NegativeArraySizeException e) {
             throw new CreatorException("Invalid values to create array were given", e.getCause());
         }
         return array;
@@ -25,7 +25,7 @@ public class ArrayCreator {
         try {
             valuesIntStream = new Random().ints(min, max)
                     .limit(maxCount).distinct().toArray();
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             throw new CreatorException("Invalid values to create array were given", e.getCause());
         }
         return valuesIntStream;

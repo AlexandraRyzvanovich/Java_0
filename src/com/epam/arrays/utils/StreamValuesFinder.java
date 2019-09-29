@@ -3,29 +3,22 @@ package com.epam.arrays.utils;
 import java.util.Arrays;
 
 public class StreamValuesFinder {
-    public double getMin(double[] array) {
-        double min = Arrays.stream(array)
+    public static double getMin(double[] array) {
+        return Arrays.stream(array)
                 .min().getAsDouble();
-
-        return min;
     }
 
-    public double getMax(double[] array) {
-        double arrayS = Arrays.stream(array).summaryStatistics()
+    public static double getMax(double[] array) {
+        return Arrays.stream(array).summaryStatistics()
                 .getMax();
-
-        return arrayS;
     }
 
-    public double getSum(double[] array) {
-        double sum = Arrays.stream(array).sum();
-
-        return sum;
+    public static double getSum(double[] array) {
+        return Arrays.stream(array).sum();
     }
-    public double getAverage(double[] array) {
-        double average = Arrays.stream(array)
+
+    public static double getAverage(double[] array) {
+        return Arrays.stream(array)
                 .average().getAsDouble();
-
-        return average;
     }
 }

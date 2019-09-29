@@ -1,7 +1,8 @@
 package com.epam.arrays.reader;
 
 import com.epam.arrays.converter.StringToDoublesConverter;
-import com.epam.arrays.exceptions.ReaderException;
+import com.epam.arrays.exceptions.ConverterException;
+import com.epam.arrays.exceptions.FileReaderException;
 import com.epam.arrays.validator.ArrayValidator;
 
 import java.io.BufferedReader;
@@ -15,14 +16,12 @@ import java.util.logging.Logger;
 
 public class Reader {
 
-    private final ArrayList<Double> lines;
-    private final StringToDoublesConverter converter;
-    private static Logger logger;
+    private final StringToDoublesConverter CONVERTER;
+    private static Logger LOGGER;
 
     public Reader() {
-        lines = new ArrayList<>();
-        converter = new StringToDoublesConverter();
-        logger = Logger.getLogger(Reader.class.getName());
+        CONVERTER = new StringToDoublesConverter();
+        LOGGER = Logger.getLogger(Reader.class.getName());
     }
 
     public double[] readFile(String path) {
@@ -32,26 +31,27 @@ public class Reader {
          ArrayValidator validator = new ArrayValidator();
         try {
             String line;
+            ArrayList<Double> lines = new ArrayList<>();
             bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
                   if (isValid) {
-                      List<Double> list = converter.covertStringToDoubles(line);
+                      List<Double> list = CONVERTER.covertStringToDoubles(line);
                       lines.addAll(list);
                 }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
-        } catch (Exception ex) {
-            throw new ReaderException("Impossible to read a file", ex);
-
+        } catch (IOException ex) {
+            throw new FileReaderException("Invalid path were given", ex);
+        } catch (ConverterException e) {
+            throw new FileReaderException("Impossible to convert", e);
         } finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
-                }
-                catch (IOException e) {
-                    logger.info("Error occurred while bufferReader closing");
+                } catch (IOException e) {
+                    LOGGER.severe ("Error occurred while bufferReader closing");
                 }
             }
         }
