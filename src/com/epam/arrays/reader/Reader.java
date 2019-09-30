@@ -1,7 +1,8 @@
 package com.epam.arrays.reader;
 
 import com.epam.arrays.converter.StringToDoublesConverter;
-import com.epam.arrays.exceptions.ReaderException;
+import com.epam.arrays.exceptions.ConverterException;
+import com.epam.arrays.exceptions.FileReaderException;
 import com.epam.arrays.validator.ArrayValidator;
 
 import java.io.BufferedReader;
@@ -11,34 +12,47 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Reader {
-    private ArrayList<Double> lines = new ArrayList<>();
-    private ArrayValidator validator = new ArrayValidator();
-    private StringToDoublesConverter converter = new StringToDoublesConverter();
 
-    public double[] readFile(final String path) throws ReaderException, IOException {
+    private final StringToDoublesConverter CONVERTER;
+    private static Logger LOGGER;
+
+    public Reader() {
+        CONVERTER = new StringToDoublesConverter();
+        LOGGER = Logger.getLogger(Reader.class.getName());
+    }
+
+    public double[] readFile(String path) {
         double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
+         ArrayValidator validator = new ArrayValidator();
         try {
             String line;
+            ArrayList<Double> lines = new ArrayList<>();
             bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
-                if (isValid) {
-                    List<Double> list = converter.covertStringToDoubles(line);
-                    lines.addAll(list);
+                  if (isValid) {
+                      List<Double> list = CONVERTER.covertStringToDoubles(line);
+                      lines.addAll(list);
                 }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
-        } catch (Exception ex) {
-            throw new ReaderException("Impossible to read a file");
-
+        } catch (IOException ex) {
+            throw new FileReaderException("Invalid path were given", ex);
+        } catch (ConverterException e) {
+            throw new FileReaderException("Impossible to convert", e);
         } finally {
-            if(bufferedReader != null) {
-                bufferedReader.close();
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    LOGGER.severe ("Error occurred while bufferReader closing");
+                }
             }
         }
         return finalArray;

@@ -1,11 +1,13 @@
 package com.epam.arrays.validator;
 
+import com.epam.arrays.exceptions.ConverterException;
+
 public class ArrayValidator {
-    private final String regex = "^[\\s\\d\\.]*$";
+    private final String REGEX = "^([+-]?\\d+(\\.\\d+)?(d|D)?(\\s+|$))+$";
 
-    public Boolean validateValues(String line) {
+    public Boolean validateValues(final String line) throws ConverterException {
 
-     return line.matches(regex);
+     return line.matches(REGEX);
     }
 
 }

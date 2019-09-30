@@ -1,17 +1,33 @@
 package com.epam.arrays.creator;
 
+import com.epam.arrays.exceptions.CreatorException;
+
 import java.util.Random;
 
 public class ArrayCreator {
-    final private int BOUND = 20;
-    final private int SIZE = 10;
 
-    public int[] getArray() {
-        Random random = new Random();
-        int[] array = new int[SIZE];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(BOUND);
+    public int[] getArray(int size, int valueRange) {
+        int[] array;
+        try {
+            Random random = new Random();
+            array = new int[size];
+            for (int i = 0; i < array.length; i++) {
+                array[i] = random.nextInt(valueRange);
+            }
+        } catch (NegativeArraySizeException e) {
+            throw new CreatorException("Invalid values to create array were given", e.getCause());
         }
         return array;
+    }
+
+    public int[] getIntStream(int min, int max, int maxCount) {
+        int[] valuesIntStream;
+        try {
+            valuesIntStream = new Random().ints(min, max)
+                    .limit(maxCount).distinct().toArray();
+        } catch (IllegalArgumentException e) {
+            throw new CreatorException("Invalid values to create array were given", e.getCause());
+        }
+        return valuesIntStream;
     }
 }
