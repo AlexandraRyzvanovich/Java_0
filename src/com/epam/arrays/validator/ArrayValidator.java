@@ -6,8 +6,6 @@ public class ArrayValidator {
     private final String REGEX = "^([+-]?\\d+(\\.\\d+)?(d|D)?(\\s+|$))+$";
 
     public Boolean validateValues(final String line) throws ConverterException {
-
-     return line.matches(REGEX);
+        return line.matches(REGEX);
     }
-
 }

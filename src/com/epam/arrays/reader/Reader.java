@@ -16,19 +16,19 @@ import java.util.logging.Logger;
 
 public class Reader {
 
-    private final StringToDoublesConverter CONVERTER;
-    private static Logger LOGGER;
+    private static Logger logger;
 
     public Reader() {
-        CONVERTER = new StringToDoublesConverter();
-        LOGGER = Logger.getLogger(Reader.class.getName());
+
+        logger = Logger.getLogger(Reader.class.getName());
     }
 
     public double[] readFile(String path) {
         double[] finalArray;
         Path filePath = Paths.get(path);
         BufferedReader bufferedReader = null;
-         ArrayValidator validator = new ArrayValidator();
+        ArrayValidator validator = new ArrayValidator();
+        StringToDoublesConverter converter = new StringToDoublesConverter();
         try {
             String line;
             ArrayList<Double> lines = new ArrayList<>();
@@ -36,13 +36,13 @@ public class Reader {
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
                   if (isValid) {
-                      List<Double> list = CONVERTER.covertStringToDoubles(line);
+                      List<Double> list = converter.covertStringToDoubles(line);
                       lines.addAll(list);
                 }
             }
             finalArray = lines.stream().mapToDouble(d -> d).toArray();
 
-        } catch (IOException ex) {
+        } catch (IOException | NullPointerException ex ) {
             throw new FileReaderException("Invalid path were given", ex);
         } catch (ConverterException e) {
             throw new FileReaderException("Impossible to convert", e);
@@ -51,7 +51,7 @@ public class Reader {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    LOGGER.severe ("Error occurred while bufferReader closing");
+                    logger.severe ("Error occurred while bufferReader closing");
                 }
             }
         }
