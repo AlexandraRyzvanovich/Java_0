@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ArrayCreatorTests {
-    ArrayCreator creator;
+    private ArrayCreator creator;
 
     @BeforeClass
     public void setUp() {

@@ -7,6 +7,11 @@ import java.util.Random;
 public class ArrayCreator {
 
     public int[] getArray(int size, int valueRange) {
+
+        if (size < 0) {
+
+
+        }
         int[] array;
         try {
             Random random = new Random();
@@ -15,7 +20,7 @@ public class ArrayCreator {
                 array[i] = random.nextInt(valueRange);
             }
         } catch (NegativeArraySizeException e) {
-            throw new CreatorException("Invalid values to create array were given", e.getCause());
+            throw new CreatorException("Invalid values to create array were given", e);
         }
         return array;
     }

@@ -1,23 +1,22 @@
 package com.epam.arrays.converter;
 
-import com.epam.arrays.exceptions.ConverterException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class StringToDoublesConverter {
 
-    public List<Double> covertStringToDoubles(String line) {
+    public double[] covertStringToDoubles(ArrayList<String> list) {
         List<Double> listDoubles = new ArrayList<>();
-        try {
+        double[] finalArray;
+        for (String line: list) {
             String[] arr = line.split(" ");
             for (String item: arr) {
                 double value = Double.parseDouble(item);
                 listDoubles.add(value);
             }
-        } catch (Exception e) {
-            throw new ConverterException ( "Impossible to convert line from a file", e.getCause());
         }
-        return listDoubles;
+            finalArray = listDoubles.stream().mapToDouble(d -> d).toArray();
+
+        return finalArray;
     }
 }

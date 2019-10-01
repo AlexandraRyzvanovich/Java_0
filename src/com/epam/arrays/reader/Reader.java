@@ -1,7 +1,5 @@
 package com.epam.arrays.reader;
 
-import com.epam.arrays.converter.StringToDoublesConverter;
-import com.epam.arrays.exceptions.ConverterException;
 import com.epam.arrays.exceptions.FileReaderException;
 import com.epam.arrays.validator.ArrayValidator;
 
@@ -11,50 +9,41 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class Reader {
 
-    private final StringToDoublesConverter CONVERTER;
-    private static Logger LOGGER;
+    private static Logger logger;
 
     public Reader() {
-        CONVERTER = new StringToDoublesConverter();
-        LOGGER = Logger.getLogger(Reader.class.getName());
+        logger = Logger.getLogger(Reader.class.getName());
     }
 
-    public double[] readFile(String path) {
-        double[] finalArray;
-        Path filePath = Paths.get(path);
+    public ArrayList<String> readFile(String path) {
+        ArrayList<String> lines = new ArrayList<>();
         BufferedReader bufferedReader = null;
-         ArrayValidator validator = new ArrayValidator();
+        ArrayValidator validator = new ArrayValidator();
+        Path filePath = Paths.get(path);
         try {
             String line;
-            ArrayList<Double> lines = new ArrayList<>();
             bufferedReader = Files.newBufferedReader(filePath);
             while ((line = bufferedReader.readLine()) != null) {
                 boolean isValid = validator.validateValues(line);
                   if (isValid) {
-                      List<Double> list = CONVERTER.covertStringToDoubles(line);
-                      lines.addAll(list);
+                      lines.add(line);
                 }
             }
-            finalArray = lines.stream().mapToDouble(d -> d).toArray();
-
         } catch (IOException ex) {
-            throw new FileReaderException("Invalid path were given", ex);
-        } catch (ConverterException e) {
-            throw new FileReaderException("Impossible to convert", e);
+            throw new FileReaderException("Exception occurred while reading a file", ex);
         } finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    LOGGER.severe ("Error occurred while bufferReader closing");
+                    logger.severe ("Error occurred while closing bufferReader");
                 }
             }
         }
-        return finalArray;
+        return lines;
     }
 }
