@@ -13,7 +13,7 @@ public class StreamSorterTests {
     }
 
     @DataProvider
-    public Object [][] arrays(){
+    public Object [][] validArrays(){
         return new Object[][]{
                 {new double[]{1.8, 2.2, 3.9, 1.5}, 1.5, 3.9},
                 {new double[]{8, 5, 4.5, 6.2, 88.2, 4.3}, 4.3, 88.2 },
@@ -21,14 +21,14 @@ public class StreamSorterTests {
         };
     }
 
-    @Test(dataProvider = "arrays")
+    @Test(dataProvider = "validArrays")
     public void sortDescTest(double[] array, double lastExpected, double firstExpected){
         double[] sortedArray = sorter.sortDesc(array);
         Assert.assertEquals(sortedArray[0], firstExpected);
         Assert.assertEquals( sortedArray[array.length - 1], lastExpected);
     }
 
-    @Test(dataProvider = "arrays")
+    @Test(dataProvider = "validArrays")
     public void sortAscTest(double[] array, double firstExpected, double lastExpected){
         double[] sortedArray = sorter.sortAsc(array);
         Assert.assertEquals(sortedArray[0], firstExpected);

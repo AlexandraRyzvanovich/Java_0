@@ -3,13 +3,13 @@
 <suite name="All Test Suite">
     <test verbose="2" name="C:/Users/Alexandra/IdeaProjects/Java_0/tests">
         <classes>
-            <class name="com.epam.arrays.converter.StringToDoubleConverterTests"/>
+            <class name="com.epam.arrays.converter.ToArrayConverterTests"/>
             <class name="com.epam.arrays.creator.ArrayCreatorTests"/>
             <class name="com.epam.arrays.reader.ReaderTests"/>
             <class name="com.epam.arrays.sorter.StreamSorterTests"/>
             <class name="com.epam.arrays.sorter.ArraySorterTests"/>
-            <class name="com.epam.arrays.utils.ArrayValuesFinder"/>
-            <class name="com.epam.arrays.utils.StreamValuesFinder"/>
+            <class name="com.epam.arrays.utils.ArrayActionTests"/>
+            <class name="com.epam.arrays.utils.StreamActionTests"/>
             <class name="com.epam.arrays.validator.ArrayValidatorTests"/>
         </classes>
     </test>

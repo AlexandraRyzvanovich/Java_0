@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ArrayValidatorTests {
-    ArrayValidator validator;
+    private ArrayValidator validator;
 
     @BeforeClass
     public void setUp(){

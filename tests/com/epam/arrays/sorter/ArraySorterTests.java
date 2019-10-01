@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ArraySorterTests {
-    ArraySorter arraySorter;
+    private ArraySorter arraySorter;
 
     @BeforeClass
     public void setUp(){
@@ -14,7 +14,7 @@ public class ArraySorterTests {
     }
 
    @DataProvider
-    public Object [][] arrays(){
+    public Object [][] validArrays(){
         return new Object[][]{
                 {new double[]{1.8, 2.2, 3.9, 1.5}, 1.5, 3.9},
                 {new double[]{8, 5, 4.5, 6.2, 88.2, 4.3}, 4.3, 88.2 },
@@ -22,28 +22,28 @@ public class ArraySorterTests {
         };
     }
 
-   @Test(dataProvider =  "arrays")
+   @Test(dataProvider =  "validArrays")
     public void bubbleSortTest(double[] array, double lastExpected, double firstExpected){
        arraySorter.bubbleSortDesc(array);
        Assert.assertEquals(array[0], firstExpected);
        Assert.assertEquals(lastExpected, array[array.length - 1]);
     }
 
-    @Test(dataProvider = "arrays")
+    @Test(dataProvider = "validArrays")
     public void swapSortTest(double[] array, double firstExpected , double lastExpected){
         arraySorter.swapSortAsc(array);
         Assert.assertEquals(array[0], firstExpected);
         Assert.assertEquals(lastExpected, array[array.length - 1]);
     }
 
-    @Test(dataProvider = "arrays")
+    @Test(dataProvider = "validArrays")
     public void selectionSortTest(double[] array, double firstExpected , double lastExpected){
         arraySorter.selectionSortAsc(array);
         Assert.assertEquals(array[0], firstExpected);
         Assert.assertEquals(lastExpected, array[array.length - 1]);
     }
 
-    @Test(dataProvider = "arrays")
+    @Test(dataProvider = "validArrays")
     public void insertionSortTest(double[] array, double firstExpected , double lastExpected){
         arraySorter.insertionSortAsc(array);
         Assert.assertEquals(array[0], firstExpected);
