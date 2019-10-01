@@ -20,13 +20,6 @@ public class ReaderTests {
         };
     }
 
-   // @Test(dataProvider = "file_ValidPath_Provider")
-  //  public void read_Valid_File_Test(String path, int expectedLength){
-  //      double[] array = reader.readFile(path);
-  //      Assert.assertNotNull(array);
-   //     Assert.assertEquals(expectedLength, array.length);
-   // }
-
     @DataProvider
     public Object[] file_InvalidPath_Provider(){
         return new Object[]

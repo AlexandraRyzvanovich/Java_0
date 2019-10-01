@@ -1,7 +1,7 @@
 package com.epam.arrays.exceptions;
 
 public class CreatorException extends RuntimeException {
-    public CreatorException(String message, Throwable cause) {
-        super(message, cause);
+    public CreatorException(String message) {
+        super(message);
     }
 }
